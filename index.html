@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Profesyonel Telefon Tamir & Alım-Satım — Tam Sürüm</title>
+<meta name="description" content="Profesyonel telefon tamir, bakım, alım-satım demo sitesi — tek dosya, gelişmiş özellikler." />
+<!-- Font Awesome (sosyal ikonlar) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="" crossorigin="anonymous">
+
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header" role="banner">
+  <div class="container navbar" role="navigation" aria-label="Üst menü">
+    <div style="display:flex;align-items:center;gap:12px">
+      <div class="logo" aria-hidden="true">📱</div>
+      <div>
+        <h1 style="font-size:16px;margin:0">Tamir & Cep-Mobile</h1>
+        <small class="small" id="tagline">Profesyonel servis — garantiyle</small>
+      </div>
+      <nav class="main-nav" aria-label="Ana menü">
+        <ul>
+          <li><a href="#home" class="nav-link active">Ana Sayfa</a></li>
+          <li><a href="#services" class="nav-link">Hizmetler</a></li>
+          <li><a href="#products" class="nav-link">Ürünler</a></li>
+          <li><a href="#contact" class="nav-link">İletişim</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="tools" role="toolbar" aria-label="Araçlar">
+      <div class="search" role="search">
+        <svg width="14" height="14" viewBox="0 0 24 24" style="opacity:.9;margin-right:8px"><path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="11" cy="11" r="6" stroke="currentColor" stroke-width="2"/></svg>
+        <input id="globalSearch" placeholder="Ürün veya hizmet ara..." aria-label="Ara">
+      </div>
+
+      <button class="btn btn-ghost" id="langBtn" title="Dil değiştir">EN</button>
+      <button class="btn btn-ghost" id="themeBtn" title="Tema">🌙</button>
+      <button class="btn btn-primary" onclick="openAdmin()" title="Admin (demo)">Admin</button>
+      <button class="cart-fab" id="cartFab" title="Sepet" onclick="toggleCartPanel()" aria-expanded="false">🛒 <span id="fabCount" class="fab-count">0</span></button>
+    </div>
+  </div>
+</header>
+
+<!-- MAIN / HERO -->
+<main>
+  <section id="home" class="hero" aria-labelledby="heroHeading">
+    <div class="hero-inner">
+      <div class="hero-card" role="region" aria-label="Tanıtım">
+        <h2 class="hero-title" id="heroHeading">Hızlı & Güvenilir Telefon Tamiri — Garantiyle</h2>
+        <p class="hero-desc">Orijinal veya yüksek kaliteli yedek parçalar, uzman teknisyenler, hızlı servis ve uygun fiyatlar. Alım-satım & ikinci el değerlendirme.</p>
+
+        <div class="cta-row">
+          <button class="btn btn-primary" onclick="scrollToSection('products')">Mağazayı Gör</button>
+          <button class="btn btn-ghost" onclick="openQuick()">Hızlı Teklif</button>
+          <button class="btn btn-ghost" onclick="openPaymentDemo()">Ödeme (Demo)</button>
+        </div>
+
+        <div class="stats" aria-hidden="true">
+          <div style="background:rgba(255,255,255,0.03);padding:8px 12px;border-radius:999px">✔ <strong id="statRep">1524</strong> Tamir</div>
+          <div style="background:rgba(255,255,255,0.03);padding:8px 12px;border-radius:999px">😊 <strong id="statCust">1210</strong> Müşteri</div>
+          <div style="background:rgba(255,255,255,0.03);padding:8px 12px;border-radius:999px">⏱ Hızlı Teslim</div>
+        </div>
+      </div>
+
+      <aside class="aside-card" aria-label="Hızlı işlem">
+        <h4 style="margin:0 0 8px">Hızlı Randevu / Teklif</h4>
+        <input id="quick_model" placeholder="Model (örn: iPhone 12)" style="width:100%;padding:10px;border-radius:8px;border:0;background:var(--glass);color:#eaf6ff;margin-bottom:8px">
+        <select id="quick_service" style="width:100%;padding:10px;border-radius:8px;border:0;background:var(--glass);color:#eaf6ff;margin-bottom:8px">
+          <option>Seçiniz — Hizmet</option>
+          <option>Ekran Değişimi</option>
+          <option>Batarya Değişimi</option>
+          <option>Yazılım & Veri Kurtarma</option>
+        </select>
+        <div style="display:flex;gap:8px">
+          <button class="btn btn-primary" onclick="submitQuick()">Gönder</button>
+          <button class="btn btn-ghost" onclick="openContact()">İletişim</button>
+        </div>
+
+        <hr style="border:none;border-top:1px dashed rgba(255,255,255,0.03);margin:12px 0">
+        <div class="small">Hızlı destek: <a href="tel:+905344883746" style="color:var(--accent)">+90 534 488 37 46</a></div>
+        <div style="margin-top:8px"><a href="https://wa.me/905344883746" target="_blank" style="color:#25D366">WhatsApp ile yaz</a></div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="section container" aria-labelledby="servicesTitle">
+    <div class="head">
+      <div>
+        <div class="title" id="servicesTitle">Hizmetlerimiz</div>
+        <div class="subtitle">Ekran, batarya, anakart, yazılım — her model için uzman destek.</div>
+      </div>
+      <div class="small">Garanti: 3-12 ay · Hızlı servis</div>
+    </div>
+
+    <div class="services-grid">
+      <div class="service" aria-label="Ekran Değişimi">
+        <div class="icon">📺</div>
+        <h4>Ekran Değişimi</h4>
+        <div class="small-muted">Orijinal cam veya yüksek kaliteli muadil. Test ve doğrulama.</div>
+      </div>
+
+      <div class="service" aria-label="Batarya Değişimi">
+        <div class="icon">🔋</div>
+        <h4>Batarya Değişimi</h4>
+        <div class="small-muted">Test edilmiş, güvenli batarya montajı.</div>
+      </div>
+
+      <div class="service" aria-label="Anakart">
+        <div class="icon">🔧</div>
+        <h4>Anakart & Donanım</h4>
+        <div class="small-muted">İleri onarım, yonga değişimi, mikro lehim.</div>
+      </div>
+
+      <div class="service" aria-label="Yazılım">
+        <div class="icon">💾</div>
+        <h4>Yazılım & Veri</h4>
+        <div class="small-muted">Yedekleme, veri kurtarma, temiz kurulum.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section id="products" class="section container" aria-labelledby="productsTitle">
+    <div class="head">
+      <div>
+        <div class="title" id="productsTitle">Mağaza & İkinci El</div>
+        <div class="subtitle">Güncel stok, test edilmiş ikinci el cihazlar, garantili satış.</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <input id="filterSearch" class="filter" placeholder="Model, marka ara..." title="Ürün ara">
+        <select id="filterBrand" class="select"><option value="">Tümü</option><option>iPhone</option><option>Samsung</option><option>Xiaomi</option><option>Huawei</option></select>
+        <select id="sortBy" class="sort"><option value="new">Yeni</option><option value="price-asc">Fiyat ↑</option><option value="price-desc">Fiyat ↓</option></select>
+        <button class="btn btn-ghost" onclick="openAdmin()">Ürün Ekle (Admin)</button>
+      </div>
+    </div>
+
+    <div id="productsGrid" class="products-grid" style="margin-top:18px"></div>
+
+    <div style="text-align:center;margin-top:18px">
+      <button id="loadMoreBtn" class="btn btn-primary" onclick="loadMore()">Daha Fazla Yükle</button>
+    </div>
+  </section>
+
+  <!-- CAMPAIGN -->
+  <section id="campaign" class="section container">
+    <div class="campaign">
+      <h3 style="margin:0">Haftanın Kampanyası</h3>
+      <p class="small-muted">Ekran değişimlerinde <strong>%20</strong> indirim — stoklarla sınırlı.</p>
+
+      <div class="countdown" id="countdown" aria-hidden="true" style="margin-top:12px">
+        <div class="box"><div id="cdDays">0</div><div class="small-muted">Gün</div></div>
+        <div class="box"><div id="cdHours">0</div><div class="small-muted">Saat</div></div>
+        <div class="box"><div id="cdMins">0</div><div class="small-muted">Dakika</div></div>
+        <div class="box"><div id="cdSecs">0</div><div class="small-muted">Saniye</div></div>
+      </div>
+
+      <div style="margin-top:12px"><button class="btn btn-primary" onclick="scrollToSection('products')">Kampanyalı Ürünleri Gör</button></div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials" class="section container">
+    <div class="head">
+      <div>
+        <div class="title">Müşteri Yorumları</div>
+        <div class="subtitle">Gerçek müşteri puanları & geri bildirimler</div>
+      </div>
+      <div class="small">Toplam <strong id="reviewCount">0</strong> yorum</div>
+    </div>
+
+    <div id="testiWrap" class="testimonials" style="margin-top:18px"></div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery" class="section container">
+    <div class="title">Galeri — Öncesi / Sonrası</div>
+    <div id="galleryGrid" class="gallery" style="margin-top:12px"></div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="section container">
+    <div class="title">SSS</div>
+    <div class="faq" style="margin-top:12px">
+      <div class="item">
+        <div class="q" onclick="toggleFaq(this)">Tamir süresi ne kadar?</div>
+        <div class="a">Çoğu işlem 1 iş günü; kompleks işler 3-7 iş günü sürebilir.</div>
+      </div>
+      <div class="item">
+        <div class="q" onclick="toggleFaq(this)">Garanti var mı?</div>
+        <div class="a">Evet; yapılan işleme göre 3-12 ay garanti sağlanır.</div>
+      </div>
+      <div class="item">
+        <div class="q" onclick="toggleFaq(this)">Ödeme seçenekleri nelerdir?</div>
+        <div class="a">Nakit, kredi kartı ve online ödeme (demo) kabul ediliyor.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOG -->
+  <section id="blog" class="section container">
+    <div class="title">Blog & İpuçları</div>
+    
+<div class="blog-grid" style="margin-top:12px">
+
+  <div class="blog-card">
+    <h3>Batarya İpuçları</h3>
+    <p>%20-80 aralığında şarj ömrünü uzatır.</p>
+    <button class="btn" onclick="openTip('batarya')">Oku</button>
+  </div>
+
+  <div class="blog-card">
+    <h3>Şarj Cihazı</h3>
+    <p>Orijinal adaptör kullanın.</p>
+    <button class="btn" onclick="openTip('sarj')">Oku</button>
+  </div>
+
+  <div class="blog-card">
+    <h3>Anakart & Donanım</h3>
+    <p>İleri onarım, yonga değişimi, mikro lehim.</p>
+    <button class="btn" onclick="openTip('anakart')">Oku</button>
+  </div>
+
+  <div class="blog-card">
+    <h3>Yazılım & Veri</h3>
+    <p>Yedekleme, veri kurtarma, temiz kurulum.</p>
+    <button class="btn" onclick="openTip('yazilim')">Oku</button>
+  </div>
+
+</div>
+
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section container">
+    <div class="head">
+      <div>
+        <div class="title">İletişim</div>
+        <div class="subtitle">Bizimle iletişime geçin — hızlı dönüş sağlanır</div>
+      </div>
+      <div class="small">Çalışma saatleri: 09:00 - 19:00</div>
+    </div>
+
+    <div class="contact-grid" style="margin-top:18px">
+      <div>
+        <form id="contactForm">
+          <label class="small">Adınız</label>
+          <input id="contactName" required style="width:100%;padding:10px;border-radius:8px;border:0;background:var(--glass);color:#eaf6ff;margin-bottom:8px" />
+          <label class="small">E-posta</label>
+          <input id="contactEmail" type="email" required style="width:100%;padding:10px;border-radius:8px;border:0;background:var(--glass);color:#eaf6ff;margin-bottom:8px" />
+          <label class="small">Mesaj</label>
+          <textarea id="contactMsg" rows="6" style="width:100%;padding:10px;border-radius:8px;border:0;background:var(--glass);color:#eaf6ff;margin-bottom:8px"></textarea>
+          <div style="display:flex;gap:8px">
+            <button class="btn btn-primary" type="submit">Gönder</button>
+            <button type="button" class="btn btn-ghost" onclick="openPaymentDemo()">Ödeme</button>
+          </div>
+        </form>
+      </div>
+
+      <aside class="contact-card">
+        <h4 style="margin:0 0 8px">İletişim Bilgileri</h4>
+        <p class="small-muted">Telefon: <a href="tel:+905554443322" style="color:var(--accent)">+90 534 488 37 46</a></p>
+        <p class="small-muted">E-posta: <a href="mailto:info@example.com" style="color:var(--accent)">yargihuseyin10@gmail.com</a></p>
+        <div style="margin-top:10px">
+          <div style="font-weight:700;margin-bottom:6px">Sosyal</div>
+          <div style="display:flex;gap:8px">
+            <a class="social" title="Facebook" href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a class="social" title="Instagram" href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a class="social" title="WhatsApp" href="https://wa.me/905554443322" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a class="social" title="Twitter" href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a class="social" title="YouTube" href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a class="social" title="TikTok" href="https://www.tiktok.com/@aaaaa3" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+</main>
+
+<!-- CART PANEL (right slide) -->
+<div id="cart-panel" aria-hidden="true"></div>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" style="display:none" role="dialog" aria-hidden="true"><img id="lightImage" src="" alt="" style="max-width:95%;max-height:90%;border-radius:10px"></div>
+
+<!-- MODAL (admin, product detail, quickform) -->
+<div id="modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);align-items:center;justify-content:center;z-index:1600">
+  <div style="background:linear-gradient(180deg,#071227,#051222);padding:18px;border-radius:12px;max-width:920px;width:94%;color:#eef9ff">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <h3 id="modalTitle">Başlık</h3>
+      <div>
+        <button class="btn btn-ghost" onclick="closeModal()">Kapat</button>
+      </div>
+    </div>
+    <div id="modalBody" style="margin-top:12px"></div>
+  </div>
+</div>
+
+<!-- PAYMENT DEMO -->
+<div id="paymentDemo" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);align-items:center;justify-content:center;z-index:1650">
+  <div style="background:linear-gradient(180deg,#071227,#051222);padding:18px;border-radius:12px;max-width:480px;width:94%;color:#eef9ff">
+    <h3>Ödeme (Demo)</h3>
+    <p class="small-muted">Sepet toplamı: <strong id="demoTotal">0</strong></p>
+    <input id="cardName" placeholder="Kart üzerindeki isim" style="width:100%;padding:10px;border-radius:8px;border:0;background:var(--glass);color:#eaf6ff;margin-bottom:8px">
+    <input id="cardNumber" placeholder="Kart numarası" style="width:100%;padding:10px;border-radius:8px;border:0;background:var(--glass);color:#eaf6ff;margin-bottom:8px">
+    <div style="display:flex;gap:8px">
+      <input placeholder="MM/YY" style="flex:1;padding:10px;border-radius:8px;border:0;background:var(--glass);color:#eaf6ff">
+      <input placeholder="CVV" style="width:120px;padding:10px;border-radius:8px;border:0;background:var(--glass);color:#eaf6ff">
+    </div>
+    <div style="display:flex;gap:8px;margin-top:12px">
+      <button class="btn btn-primary" onclick="simulateCheckout()">Ödeme Yap (Demo)</button>
+      <button class="btn btn-ghost" onclick="closePaymentDemo()">Kapat</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div>
+      <div style="font-weight:800">Yargı & Cep-mobile</div>
+      <div class="small-muted">© <span id="year"></span> — Tüm hakları saklıdır.</div>
+    </div>
+    <nav class="socials" aria-label="Sosyal medya">
+      <a href="#" title="Facebook" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" title="Instagram" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://wa.me/905344883746" title="WhatsApp" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      <a href="#" title="Twitter" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+      <a href="#" title="YouTube" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+      <a href="https://www.tiktok.com/@aaaaa3" target="_blank" title="TikTok" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+    </nav>
+  </div>
+</footer>
+
+
+
+<!-- Tip Modals -->
+<div id="tip-batarya" class="modal" style="display:none;">
+  <div class="modal-content">
+    <span class="close" onclick="closeTip('batarya')">&times;</span>
+    <h3>Batarya İpuçları</h3>
+    <p>Bataryayı %20-80 aralığında şarj etmek ömrünü uzatır. Aşırı sıcak ve tam boşaltmadan kaçının.</p>
+  </div>
+</div>
+
+<div id="tip-sarj" class="modal" style="display:none;">
+  <div class="modal-content">
+    <span class="close" onclick="closeTip('sarj')">&times;</span>
+    <h3>Şarj Cihazı</h3>
+    <p>Orijinal adaptör cihazınızı korur, sahte adaptörler bataryaya zarar verir.</p>
+  </div>
+</div>
+
+<div id="tip-anakart" class="modal" style="display:none;">
+  <div class="modal-content">
+    <span class="close" onclick="closeTip('anakart')">&times;</span>
+    <h3>Anakart & Donanım</h3>
+    <p>Yonga değişimi ve mikro lehim işlemleri uzman teknisyenlerce yapılmalıdır.</p>
+  </div>
+</div>
+
+<div id="tip-yazilim" class="modal" style="display:none;">
+  <div class="modal-content">
+    <span class="close" onclick="closeTip('yazilim')">&times;</span>
+    <h3>Yazılım & Veri</h3>
+    <p>Düzenli veri yedekleme yapın. Gerektiğinde temiz kurulum ile cihazınızı hızlandırabilirsiniz.</p>
+  </div>
+</div>
+
+<!-- Chatbot -->
+<div id="chatBotBtn" style="position:fixed;bottom:80px;right:20px;background:linear-gradient(90deg,#ff6600,#ff3b7a);color:#fff;padding:14px;border-radius:50%;cursor:pointer;z-index:1700;box-shadow:0 4px 20px rgba(0,0,0,.5)">💬</div>
+<div id="chatBotWin" style="position:fixed;bottom:140px;right:20px;width:320px;max-height:420px;background:#071726;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,.6);display:none;flex-direction:column;overflow:hidden;z-index:1700">
+  <header style="background:#0b2a3b;padding:8px 12px;font-weight:700;color:#fff;display:flex;justify-content:space-between;align-items:center">
+    Destek Botu <button onclick="toggleBot()" style="background:none;border:0;color:#fff">✖</button>
+  </header>
+  <div id="chatBotMsgs" style="flex:1;overflow:auto;padding:10px;color:#eaf6ff;font-size:14px"></div>
+  <div id="chatBotInput" style="display:flex;border-top:1px solid rgba(255,255,255,.1)">
+    <input id="botTxt" placeholder="Mesajınızı yazın..." style="flex:1;padding:8px;border:0;outline:0;background:transparent;color:#fff">
+    <button onclick="sendBot()" style="background:#ff6600;border:0;padding:0 14px;color:#fff;font-weight:700;cursor:pointer">Gönder</button>
+  </div>
+</div>
+
+
+
+
+
+  <script src="script.js"></script>
+</body>
+</html>
