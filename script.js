@@ -8,10 +8,10 @@ function safeSet(key, value){
 function safeGet(key, fallback){
   try{ const v = localStorage.getItem(key); return v ? JSON.parse(v) : fallback; }
   catch(e){ return inMemory[key] ?? fallback; }
-}
 
-/* ================= DEMO DATA ================= */
-let PRODUCTS = safeGet('prod_demo_v2', null);
+
+/* ================= cep mobile ================= */
+let PRODUCTS = safeGet('yargı iletişim', null);
 if(!PRODUCTS){
   PRODUCTS = [
     {id:1,name:"iPhone 12 - 64GB",brand:"iPhone",price:8500,desc:"Garantili, temiz ikinci el.",new:true,stock:3},
@@ -27,16 +27,16 @@ if(!PRODUCTS){
     {id:11,name:"Xiaomi Redmi Note 10",brand:"Xiaomi",price:3500,desc:"F/P ürünü.",new:false,stock:9},
     {id:12,name:"Sony Xperia 5",brand:"Sony",price:9500,desc:"Premium cihaz.",new:true,stock:1}
   ];
-  safeSet('prod_demo_v2', PRODUCTS);
+  safeSet('yargı iletişim', PRODUCTS);
 }
 
 let REVIEWS = safeGet('rev_demo_v2', null) || [
   {id:1,name:"Ahmet Y",text:"Telefonum aynı gün tamir edildi, çok memnun kaldım.",rating:5},
   {id:2,name:"Elif K",text:"Parçalar orijinal gibiydi, servis hızlı.",rating:5},
-  {id:3,name:"Murat D",text:"İkinci el cihazım tertemiz geldi.",rating:4}
+  {id:3,name:"Murat D",text:"İkinci el cihazım tertemiz geldi.",rating:4}  
 ];
 
-let POSTS = safeGet('posts_demo_v2', null) || [
+let POSTS = safeGet('yargı iletişim', null) || [
   {id:1,title:"Batarya Ömrünü Uzatma",excerpt:"Basit alışkanlıklarla batarya sağlığınızı koruyun."},
   {id:2,title:"Ekran Koruma Rehberi",excerpt:"Hangi koruyucu tercihi daha iyi?"},
   {id:3,title:"Yedek Parça Kalitesi",excerpt:"Orijinal ve OEM farkları."}
@@ -247,7 +247,7 @@ function openAdmin(){
         <div id="adminList" style="max-height:360px;overflow:auto;padding-right:6px"></div>
       </div>
     </div>`;
-  openModal('Admin Paneli (Demo)', html);
+  openModal('Admin Paneli (giriş)', html);
   renderAdminList();
 }
 
@@ -314,7 +314,7 @@ function adminRemove(id){
   safeSet('prod_demo_v2', PRODUCTS);
   renderProducts(productsPage);
   renderAdminList();
-  toast('Ürün silindi (demo)');
+  toast('Ürün silindi (boş)');
 }
 
 /* ============== REVIEWS / BLOG / GALLERY ============== */
